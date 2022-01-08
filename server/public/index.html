@@ -6,10 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js"></script>
     <script src="scripts/clients.js"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <link rel="stylesheet" href="styles/style.css">
     <title>TO DO</title>
 </head>
 <body>
-    
+    <header>
+        <div class="container-fluid header-content">
+            <div class="row">
+                <div class="col-sm- logo-div">
+                    <img src="images/TO-DO.png" class="icon" />
+                </div class="col-xl-">
+                <div class="info-div">
+                    <h1> TASKS </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="grid">
+              <section id="addTask">
+                <h2 id="heading">Add To Do Task</h2>
+                    <form id="toDoForm">
+                        <input type="text" class="taskInput" id="taskIn" value="" placeholder="Task" required>
+                        <textarea 
+                            required    
+                            type="text"
+                            cols="20"
+                            rows="3"
+                            class="descriptionInput" 
+                            id="descriptionIn" 
+                            value="" 
+                            placeholder="Descriptions" 
+                        ></textarea>
+                        <!-- <input type="checkbox" id="checkOff"> -->
+                        <button type="submit" id="addButton">Add Task</button>     
+                    </form>
+              </section>
+            </div>
+            <div class="grid">
+              <section id="toDoSection">
+                <h2 id="taskList">To Do List</h2>
+                <input type="text" id="filterField" onkeyup="filterKoalas()" placeholder="Filter Tasks by Name">
+                <table class="table table-bordered" id="toDoTable">
+                    <thead>
+                    <!-- <div class="someBtns" id="editSection"><button id="editBtn">Edit Koalas</button></div> -->
+                        <tr>
+                            <th>Task</th>
+                            <th>Descriptions</th>
+                            <th id="checkOffColumn">✅</th>
+                        </tr>
+                    </thead>
+                  <tbody id="viewTasks">
+                  </tbody>
+                </table>
+              </section>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
