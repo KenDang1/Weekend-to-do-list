@@ -38,7 +38,7 @@ function addTask() {
         return;
     }
 
-    // ajax call to server to get tasks
+    // ajax call to server to post task
     // sending to server as "req.body"
     $.ajax ({
         method: 'POST',
@@ -57,5 +57,17 @@ function addTask() {
 } // end of addTask
 
 function getTasks() {
-
+    console.log('in getTasks');
+    // ajax call to server to get tasks
+    $.ajax({
+        method: 'GET',
+        url:    '/tasks',
+    })
+    .then ((res) => {
+        console.log('in GET /tasks', res);
+        renderTasks();
+    })
+    .catch ((err) => {
+        console.log('ERROR in GET /tasks 🤯', err);
+    })
 }; // end of getTasks
