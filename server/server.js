@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 // connect to task.router.js
-const tasksRouter = require('/.routes/task.router');
+const tasksRouter = require('./routes/task.router');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('server/public'));
