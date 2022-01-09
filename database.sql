@@ -3,12 +3,12 @@
 CREATE TABLE "tasks"
     (
         "id" SERIAL PRIMARY KEY,
-        "task-to-do" VARCHAR (30) NOT NULL,
+        "task" VARCHAR (30) NOT NULL,
         "description" VARCHAR(200) NOT NULL,
-        "status" BOOLEAN DEFAULT FALSE
+        "status" BOOLEAN DEFAULT FALSE,
     );
 
 INSERT INTO "tasks"
-    ("task-to-do", "description")
+    ("task", "description")
 VALUES
-    ("To-Do-App", "weekend homework");
+    ('To-Do-App', 'weekend homework');

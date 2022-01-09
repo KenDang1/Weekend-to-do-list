@@ -16,8 +16,8 @@ function clickListeners() {
         addTask();
     })
     // Here are some listeners
-    $(document).on('click', editTask);
-    $(document).on('click', deleteTask);
+    // $(document).on('click', editTask);
+    // $(document).on('click', deleteTask);
 
 }; // end of clickListeners
 
@@ -65,9 +65,34 @@ function getTasks() {
     })
     .then ((res) => {
         console.log('in GET /tasks', res);
-        renderTasks();
+        renderTasks(res);
     })
     .catch ((err) => {
         console.log('ERROR in GET /tasks 🤯', err);
     })
 }; // end of getTasks
+
+function renderTasks(tasks) {
+    console.log('in renderKoalas');
+
+    // Empty the table
+    $('#viewTasks').empty();
+
+    for (let task of tasks) {
+        console.log('append task is', task);
+        
+        $('#viewTasks').append(`
+            <tr>
+                <td class="appendTask">${task.task}</td>
+                <td class="appendDescription">${task.description}</td>
+                <td class="appendStatus">${task.status}</td>
+                <td>
+                    <button class="deleteBtn">
+                    Complete
+                    </button>
+                </td>
+            </tr>
+        `)
+    }
+    
+}; // end of append Task
