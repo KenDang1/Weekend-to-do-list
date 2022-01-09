@@ -43,6 +43,28 @@ tasksRouter.get('/', (req, res) => {
     });
 }); // end of GET endpoint
 
+// DELETE endpoint
+tasksRouter.delete('/:id', (req, res) => {
+    console.log('in DELETE /tasks :id', req.params.id);
+
+    let queryText = `
+        DELETE FROM "tasks"
+        WHERE id = $1;
+    `;
+
+    let queryParams = [
+        req.params.id
+    ];
+
+    pool.query(queryText, queryParams)
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log('failed to delete 👻', err);
+            res.sendStatus(500);
+        })
+}); // end of DELETE endpoint
 
 
 // export everything to server side
