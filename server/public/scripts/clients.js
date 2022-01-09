@@ -83,6 +83,7 @@ function renderTasks(tasks) {
         
         $('#viewTasks').append(`
             <tr
+            class="gray"
             data-id="${task.id}"
             data-status="${task.status}" 
             >
@@ -181,7 +182,6 @@ function completeStatusCheck() {
     if (checkStatus) {
         checkStatus = false;
     } else {
-        
         checkStatus = true;
     }
 

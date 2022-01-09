@@ -69,9 +69,18 @@ main {
     border: ridge mediumslateblue
 }
 
+.gray[data-status="false"] {
+    background-color: rgb(208, 204, 204);
+}
+
+.gray[data-status="true"] {
+    background-color: green;
+}
+
 main .grid {
     padding-top: 30px;
 }
+
 footer {
     padding-top: 45px;
     padding-left: 45px;
