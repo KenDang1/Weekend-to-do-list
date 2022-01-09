@@ -44,7 +44,7 @@ form{
 }
 
 #taskIn{
-    margin-bottom: 5px;
+    VERTICAL-ALIGN: TEXT-TOP;
 }
 
 #descriptionIn{
@@ -79,6 +79,12 @@ main {
 
 main .grid {
     padding-top: 30px;
+}
+
+.deleteBtn {
+    font-weight: 900;
+    color: red;
+    border: black solid 3px;
 }
 
 footer {
