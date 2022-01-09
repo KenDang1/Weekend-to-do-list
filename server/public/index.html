@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="container-fluid header-content">
-            <div class="row">
+            <div>
                 <div class="col-sm- logo-div">
                     <img src="images/TO-DO.png" class="icon" />
                 </div class="col-xl-">
@@ -27,28 +27,44 @@
     <main>
         <div class="container-fluid">
             <div class="grid">
-              <section id="addTask">
-                <h2 id="heading">Add To Do Task</h2>
-                    <form id="toDoForm">
-                        <input type="text" class="taskInput" id="taskIn" value="" placeholder="Task" required>
-                        <textarea 
-                            required    
-                            type="text"
-                            cols="20"
-                            rows="3"
-                            class="taskInput"
-                            id="descriptionIn" 
-                            value="" 
-                            placeholder="Descriptions" 
-                        ></textarea>
-                        <button type="submit" id="addButton">Add Task</button>     
-                    </form>
-              </section>
+                <section id="addTask">
+                    <h2 id="heading">Add To Do Task</h2>
+                        <form id="toDoForm">
+                            <input 
+                                type="text" 
+                                class="taskInput" 
+                                id="taskIn" 
+                                value="" 
+                                placeholder="Task" 
+                                required
+                            >
+                            <textarea 
+                                required    
+                                type="text"
+                                cols="20"
+                                rows="3"
+                                class="taskInput"
+                                id="descriptionIn" 
+                                value="" 
+                                placeholder="Descriptions" 
+                            ></textarea>
+                            <button 
+                                type="submit" 
+                                id="addButton">
+                                Add Task
+                            </button>     
+                        </form>
+                </section>
             </div>
             <div class="grid">
               <section id="toDoSection">
                 <h2 id="taskList">To Do List</h2>
-                <input type="text" id="filterField" onkeyup="filterKoalas()" placeholder="Filter Tasks by Name">
+                <input 
+                    type="text" 
+                    id="filterField" 
+                    onkeyup="filterList()" 
+                    placeholder="Filter Tasks by Name"
+                >
                 <table class="table table-bordered" id="toDoTable">
                     <thead>
                         <tr>
