@@ -10,7 +10,7 @@ tasksRouter.post('/', (req, res) => {
 
     let queryText = `
         INSERT INTO "tasks"
-            ("task-to-do", "description")
+            ("task", "description")
         VALUES ($1, $2);
     `;
 
@@ -38,11 +38,10 @@ tasksRouter.get('/', (req, res) => {
         res.send(result.rows)
     })
     .catch((err) => {
-        console.log('ERRPR in GET /tasks router', err);
+        console.log('ERROR in GET /tasks router', err);
         res.sendStatus(500);
     });
 }); // end of GET endpoint
-
 
 
 
