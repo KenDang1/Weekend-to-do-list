@@ -103,9 +103,9 @@ function renderTasks(tasks) {
 // Function to check complete status
 function checkCompleteStatus(task) {
     if (task.status) {
-    return '<input type="checkbox" class="completeCheckbox" checked>'
+    return '<input type="checkbox" class="completeCheckbox" checked> Yes </input>'
     } else {
-    return '<input type="checkbox" class="completeCheckbox">'
+    return '<input type="checkbox" class="completeCheckbox"> No </input>'
     }
   } // end checkTransferStatus
 
@@ -113,9 +113,14 @@ function checkCompleteStatus(task) {
 function deleteTask() {
     // Grabbing the task ID
     // the ID is from render
-    let taskId = $(this).parents('tr').data('id')
-    console.log('in complete task');
+    let taskId = $(this).parents('tr').data('id');
+    let status = $(this).parents('tr').data('status');
 
+    // With this argument the delete button 
+    // can not be click until task is true (turn green)
+    if (status === false) {
+        return;
+    } else {
     // This is sweetAlert2
     // a small window will pop to verify your action
     Swal.fire({
@@ -142,7 +147,7 @@ function deleteTask() {
         .catch((err) => {
         console.log('DELETE failed 🙀', err);
         })};
-    });
+    })};
     
 }; // end of completeTask
 
@@ -200,4 +205,4 @@ function completeStatusCheck() {
     .catch( err => {
         console.log('PUT /tasks/status failed', err);
     });
-} // end 
+} // end of completeStatusCheck

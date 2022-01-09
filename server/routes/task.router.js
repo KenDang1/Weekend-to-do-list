@@ -66,7 +66,7 @@ tasksRouter.delete('/:id', (req, res) => {
         })
 }); // end of DELETE endpoint
 
-// Start ofPUT /tasks/status endpoint
+// Start of PUT /tasks/status endpoint
 tasksRouter.put('/status/:id', (req, res) => {
     console.log('id is', req.params.id);
     let queryText = `
