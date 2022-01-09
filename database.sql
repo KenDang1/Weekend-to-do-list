@@ -5,7 +5,7 @@ CREATE TABLE "tasks"
         "id" SERIAL PRIMARY KEY,
         "task" VARCHAR (30) NOT NULL,
         "description" VARCHAR(200) NOT NULL,
-        "status" BOOLEAN DEFAULT FALSE,
+        "status" BOOLEAN DEFAULT FALSE NOT NULL,
     );
 
 INSERT INTO "tasks"

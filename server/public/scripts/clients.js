@@ -16,8 +16,8 @@ function clickListeners() {
         addTask();
     })
     // Here are some listeners
-    // $(document).on('click', editTask);
     $(document).on('click', '.deleteBtn', deleteTask);
+    $(document).on('change', '.completeCheckbox', completeStatusCheck);
 
 }; // end of clickListeners
 
@@ -169,3 +169,35 @@ for (i = 0; i < tr.length; i++) {
         } 
         }
 }; // end of filterList
+
+function completeStatusCheck() {
+    console.log('in completeStatusCheck');
+
+    // Pull taskId and transfer status from table
+    let taskId = $(this).parents('tr').data('id');
+    let checkStatus = $(this).parents('tr').data('status');
+
+    // Check if true/false then reassign to false/true respectively
+    if (checkStatus) {
+        checkStatus = false;
+    } else {
+        
+        checkStatus = true;
+    }
+
+    // Make PUT request to /tasks/status/:id
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/status/${taskId}`,
+        data: {
+        status: checkStatus
+        }
+    })
+    .then( () => {
+        console.log('PUT /tasks/status success');
+        getTasks();
+    })
+    .catch( err => {
+        console.log('PUT /tasks/status failed', err);
+    });
+} // end 

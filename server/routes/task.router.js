@@ -66,6 +66,29 @@ tasksRouter.delete('/:id', (req, res) => {
         })
 }); // end of DELETE endpoint
 
+// Start ofPUT /tasks/status endpoint
+tasksRouter.put('/status/:id', (req, res) => {
+    console.log('id is', req.params.id);
+    let queryText = `
+        UPDATE "tasks"
+        SET "status" = $1
+        WHERE "id" = $2;
+    `;
+
+    let queryParams = [
+        req.body.status,
+        req.params.id
+    ];
+
+    pool.query(queryText, queryParams)
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log('Error in status change', err);
+            res.sendStatus(500);  
+        }) 
+}); // end of PUT /tasks/status endpoint
 
 // export everything to server side
 module.exports = tasksRouter;
