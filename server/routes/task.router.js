@@ -30,5 +30,21 @@ tasksRouter.post('/', (req, res) => {
         });
 }); // end POST endpoint
 
+// GET endpoint
+tasksRouter.get('/', (req, res) => {
+    console.log('in GET /tasks router');
+    let queryText = `Select * FROM "tasks" ORDER by "id"`
+    pool.query(queryText).then((result) => {
+        res.send(result.rows)
+    })
+    .catch((err) => {
+        console.log('ERRPR in GET /tasks router', err);
+        res.sendStatus(500);
+    });
+}); // end of GET endpoint
+
+
+
+
 // export everything to server side
 module.exports = tasksRouter;
