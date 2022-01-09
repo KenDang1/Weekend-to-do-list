@@ -88,12 +88,7 @@ function renderTasks(tasks) {
             >
                 <td class="appendTask">${task.task}</td>
                 <td class="appendDescription">${task.description}</td>
-                <td class="appendStatus">${task.status}</td>
-                <td>
-                    <button class="complete">
-                    Complete
-                    </button>
-                </td>
+                <td>${checkCompleteStatus(task)}</td>
                 <td>
                     <button class="deleteBtn">
                     DELETE
@@ -103,6 +98,16 @@ function renderTasks(tasks) {
         `)
     }
 }; // end of append Task
+
+// Function to check complete status
+function checkCompleteStatus(task) {
+    if (task.status) {
+    return '<input type="checkbox" class="completeCheckbox" checked>'
+    } else {
+    return '<input type="checkbox" class="completeCheckbox">'
+    }
+  } // end checkTransferStatus
+
 
 function deleteTask() {
     // Grabbing the task ID
@@ -139,3 +144,28 @@ function deleteTask() {
     });
     
 }; // end of completeTask
+
+// Function to filter/search through to do list
+function filterList() {
+    // Declare variables
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("filterField");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("toDoTable");
+    tr = table.getElementsByTagName("tr");
+
+// Loop through all table rows and hide those who don't match
+// the search query
+for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1){
+            tr[i].style.display = ""
+        }
+        else{
+            tr[i].style.display = "none";
+            }
+        } 
+        }
+}; // end of filterList
